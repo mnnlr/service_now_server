@@ -57,12 +57,3 @@ export const login = async (req, res) => {
     }
 
 }
-
-export const logout = async (req, res) => {
-    try {
-        return res.clearCookie('access_token').status(200).json({ message: "User logout successfully" })
-    } catch (error) {
-        console.log("error in logout controller", error.message);
-        return res.status(500).json(error.message)
-    }
-} 
