@@ -12,8 +12,7 @@ dotenv.config()
 mongoose
     .connect(process.env.MONGODB_URL)
     .then(() => console.log("Connected to database"))
-    .catch((err) => console.log(err.message)) 
-
+    .catch((err) => console.log(err.message));
 
 const app = express()
 app.use(express.json())
@@ -22,16 +21,15 @@ app.use(cookieParser())
 app.use(cors(
     {
         origin: ["http://127.0.0.1:5173", "http://localhost:3000"],
-        credentials: true, 
-    
+        credentials: true,
+
     }
 ))
 
 const port = process.env.PORT || 5000;
- 
 
-app.use("/api/auth", authRoute) 
-app.use('/api/incidents',incidentRoutes)
+app.use("/api/auth", authRoute)
+app.use('/api/incidents', incidentRoutes)
 
 
 app.listen(port, () => console.log(`server listening on port :${port}`))
